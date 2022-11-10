@@ -6,3 +6,5 @@
 ^.Rhistory$
 ^.Rproj.user$
 ^\.git$
+^\.github$
+^README\.Rmd$
