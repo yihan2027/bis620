@@ -6,7 +6,7 @@
 #' either a `time` or `freq` column.
 #' @return a time-series plot faceted by axis.
 #' @importFrom tidyr pivot_longer all_of
-#' @importFrom ggplot2 aes geom_line facet_grid
+#' @importFrom ggplot2 aes ggplot geom_line facet_grid
 #' @examples
 #' data(ukb_accel)
 #' accel_plot(ukb_accel[1:1000,])
@@ -21,7 +21,7 @@ accel_plot <- function(x) {
   }
   x |>
     pivot_longer(-all_of(col)) |>
-    ggplot(ggplot2::aes(x = {{col}}, y = value)) +
+    ggplot(aes(x = {{col}}, y = value)) +
       geom_line() +
       facet_grid(name ~ .)
 }
