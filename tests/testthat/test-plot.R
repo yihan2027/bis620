@@ -2,7 +2,7 @@ test_that(
   "The accel_plot() returns a ggplot object.",
   {
     data(ukb_accel)
-    p =  accel_plot(ukb_accel[1:100,])
+    p <-  accel_plot(ukb_accel[1:100, ])
     expect_true(inherits(p, "gg"))
   }
 )
@@ -19,7 +19,17 @@ test_that(
   "The accel_plot() is correct for time-series data.",
   {
     data(ukb_accel)
-    p = accel_plot(ukb_accel[1:100,])
-    expect_doppelganger("first-100-samples", p) #does the plot look the same as what we see in the snapshot
+    p <- accel_plot(ukb_accel[1:100, ])
+    vdiffr::expect_doppelganger("first-100-samples", p)
+    #does the plot look the same as what we see in the snapshot
+  }
+)
+
+test_that(
+  "The accel_plot() is correct for freq data.",
+  {
+    data("ukb_accel")
+    p <- accel_plot(ukb_accel[1:100, ] |> spectral_signature(take_log = TRUE))
+    vdiffr::expect_doppelganger("first-100-samples-freq", p)
   }
 )
