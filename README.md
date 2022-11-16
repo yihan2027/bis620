@@ -5,7 +5,9 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/USERNAME/REPONAME/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/USERNAME/REPONAME/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/yihan2027/bis612.2022/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/USERNAME/REPONAME/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/yihan2027/bis612.2022/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/USERNAME/REPONAME/actions/workflows/test-coverage.yaml)
+[![lint](https://github.com/yihan2027/bis612.2022/actions/workflows/lint.yaml/badge.svg)](https://github.com/USERNAME/REPONAME/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
 The goal of bis620.2022 is to …
@@ -17,7 +19,7 @@ You can install the development version of bis620.2022 from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("USERNAME/REPONAME")
+devtools::install_github("yihan2027/bis620.2022")
 ```
 
 ## Example
