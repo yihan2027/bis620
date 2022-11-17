@@ -11,7 +11,7 @@ spectral_signature(x, take_log = FALSE, inverse = TRUE)
 \item{x}{an object inherited from a data.frame with columns X, Y, Z, and time
 sorted in time.}
 
-\item{take_log}{should the log of the modulus be taken. (Default is \code{TRUE})}
+\item{take_log}{should the log of the modulus be taken. (Default is \code{FALSE})}
 
 \item{inverse}{should the unnormalized inverse transform is computed.
 (Default is \code{TRUE})}
