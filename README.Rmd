@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/yihan2027/bis620/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/yihan2027/bis620/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/yihan2027/bis620/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/yihan2027/bis620/actions/workflows/test-coverage.yaml)
 [![lint](https://github.com/yihan2027/bis620/actions/workflows/lint.yaml/badge.svg)](https://github.com/yihan2027/bis620/actions/workflows/lint.yaml)
+[![Codecov test coverage](https://codecov.io/gh/yihan2027/bis620/branch/main/graph/badge.svg)](https://app.codecov.io/gh/yihan2027/bis620?branch=main)
 <!-- badges: end -->
 
 Here is the [lint result.](https://github.com/yihan2027/bis620/actions/workflows/lint.yaml)
