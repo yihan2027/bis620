@@ -8,3 +8,5 @@
 ^\.git$
 ^\.github$
 ^README\.Rmd$
+^doc$
+^Meta$
