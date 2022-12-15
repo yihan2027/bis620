@@ -13,7 +13,7 @@ test_that(
     data(dl)
     p <-  survival_plot(ae_surv(dl$adae, "Rash"),
                         "PFS", "Treatment", "Wild-type")
-    vdiffr::expect_doppelganger("Survival_plot_PFS_treatment", p)
+    vdiffr::expect_doppelganger("survival_plot_pfs_treatment", p)
   }
 )
 test_that(
@@ -30,7 +30,7 @@ test_that(
     data(dl)
     p <-  survival_plot(ae_surv(dl$adae, "Rash"),
                         "OS", "Treatment", "Wild-type")
-    vdiffr::expect_doppelganger("Survival_plot_OS_treatment", p)
+    vdiffr::expect_doppelganger("survival_plot_os_treatment", p)
   }
 )
 test_that(
