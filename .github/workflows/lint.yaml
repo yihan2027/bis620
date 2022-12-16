@@ -26,7 +26,7 @@ jobs:
           needs: lint
 
       - name: Lint
-        run: lintr::lint_package(linters = lintr::linters_with_defaults(cyclocomp_linter = cyclocomp_linter(25)))
+        run: lintr::lint_package(linters = lintr::linters_with_defaults(cyclocomp_linter = lintr::cyclocomp_linter(25)))
         shell: Rscript {0}
         env:
           LINTR_ERROR_ON_LINT: true
