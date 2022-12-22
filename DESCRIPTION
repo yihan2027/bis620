@@ -7,7 +7,7 @@ Maintainer: The package maintainer <michael.kane@yale.edu>
 Description: Captures functions, data, and documentation for BIS620 as taught in 2022.
 License: LGPL (>= 2.1)
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.2.2
 Imports: 
   dplyr,
   ggplot2,

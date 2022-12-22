@@ -23,7 +23,6 @@ library(bis620.2022)
 ```{r, include = FALSE}
 library(knitr)
 library(dplyr)
-library(kableExtra)
 library(gtsummary)
 ```
 
@@ -138,7 +137,7 @@ A two-sample proportion test was conducted to compare the occurrence rate of eac
 
 The function *adverse_event()* from bis620.2022 package was used for analysis. 
 ```{r}
-adverse_event(dl$adae, "Wild-type") |> kable() |> kable_styling(font_size = 12)
+adverse_event(dl$adae, "Wild-type") |> kable() 
 ```
 We can tell that there was a significant difference between panitumumab-FOLFOX4 and FOLFOX4 alone groups for the adverse events listed below: dermatitis acneiform (32% vs. 0%, P=5.53e-21), rash (54% vs. 7%, P=1.36e-27), skin fissures (16% vs. 0%, P=2.21e-10), acne (14% vs. 0%, P=2.11e-08), erythema (16% vs. 3%, P=3.37e-06), dry skin (20% vs. 6%, P=4.14e-06), pruritus	(26% vs. 5%, P=1.28e-09), and palmar-plantar erythrodysaesthesia syndrome (11% vs. 2%, P=5.58e-05). 
 

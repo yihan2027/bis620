@@ -10,7 +10,6 @@ library(bis620.2022)
 ## ---- include = FALSE---------------------------------------------------------
 library(knitr)
 library(dplyr)
-library(kableExtra)
 library(gtsummary)
 
 ## -----------------------------------------------------------------------------
@@ -57,7 +56,7 @@ log_rank(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")$median
 log_rank(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")$p
 
 ## -----------------------------------------------------------------------------
-adverse_event(dl$adae, "Wild-type") |> kable() |> kable_styling(font_size = 12)
+adverse_event(dl$adae, "Wild-type") |> kable() 
 
 ## -----------------------------------------------------------------------------
 ae_surv(dl$adae, "Rash") |>
