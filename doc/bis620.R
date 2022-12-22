@@ -56,7 +56,10 @@ log_rank(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")$median
 log_rank(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")$p
 
 ## -----------------------------------------------------------------------------
-adverse_event(dl$adae, "Wild-type") |> kable()
+adverse_event(dl$adae, "Wild-type")$table |> kable(format = "simple")
+
+## ---- fig.align='center', fig.dim = c(7, 4.5)---------------------------------
+adverse_event(dl$adae, "Wild-type")$plot
 
 ## -----------------------------------------------------------------------------
 ae_surv(dl$adae, "Rash") |>

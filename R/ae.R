@@ -15,6 +15,8 @@
 #' @importFrom dplyr left_join select filter distinct count pull
 #' @importFrom stats prop.test
 #' @importFrom scales label_percent
+#' @importFrom ggplot2 ggplot geom_bar theme xlab position_dodge element_text
+#' @importFrom stats reorder
 #' @export
 adverse_event <- function(x, biomarker = c("Wild-type", "Mutant")) {
   ae <- x
@@ -39,6 +41,7 @@ adverse_event <- function(x, biomarker = c("Wild-type", "Mutant")) {
     count() |>
     pull()
   df <- data.frame()
+  df_plot <- data.frame()
   for (i in ae_list){
     p_w <- ae |>
       filter(AEPT == i) |>
@@ -59,7 +62,11 @@ adverse_event <- function(x, biomarker = c("Wild-type", "Mutant")) {
           f_w_per <- paste0(f_w, " (", label_percent()(f_w / f_w_all), ")")
           row <- c(i, p_w_per, f_w_per,
                    signif(as.double(twosample_prop$p.value), 3))
+          row1 <- c(i, as.integer(p_w), "Panitumumab+FOLFOX")
+          row2 <- c(i, as.integer(f_w), "FOLFOX")
           df <- rbind(df, row)
+          df_plot <- rbind(df_plot, row1)
+          df_plot <- rbind(df_plot, row2)
         }
       }
     }
@@ -67,5 +74,14 @@ adverse_event <- function(x, biomarker = c("Wild-type", "Mutant")) {
   pf <- paste0("Panitumumab+FOLFOX (n=", p_w_all, ")")
   f <- paste0("FOLFOX (n=", f_w_all, ")")
   colnames(df) <- c("Adverse event", pf, f, "p-value")
-  df
+  colnames(df_plot) <- c("Adverse_event", "count", "arm")
+  plot <- df_plot |> mutate(count = as.integer(count)) |>
+    ggplot(aes(x = reorder(Adverse_event, -count), y = count, fill = arm)) +
+    geom_bar(stat = "identity", position = position_dodge()) +
+    theme(axis.text.x = element_text(angle = 15, hjust = 1)) +
+    xlab("Adverse event")
+  dfs <- list()
+  dfs$table <- df
+  dfs$plot <- plot
+  return(dfs)
 }
