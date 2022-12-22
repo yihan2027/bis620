@@ -57,7 +57,8 @@ adverse_event <- function(x, biomarker = c("Wild-type", "Mutant")) {
         if (twosample_prop$p.value < 0.05) {
           p_w_per <- paste0(p_w, " (", label_percent()(p_w / p_w_all), ")")
           f_w_per <- paste0(f_w, " (", label_percent()(f_w / f_w_all), ")")
-          row <- c(i, p_w_per, f_w_per, as.double(twosample_prop$p.value))
+          row <- c(i, p_w_per, f_w_per,
+                   signif(as.double(twosample_prop$p.value), 3))
           df <- rbind(df, row)
         }
       }

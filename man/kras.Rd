@@ -12,8 +12,8 @@ loci and its mutation.}
 
 \item{mutant_standard}{If mutant_standard=1, A patient will be considered
 “Mutant” if there is at least one “Mutant” biomarker in KRAS exons 2, 3, 4.
-Patients will be considered “Wild-type” if they are not “Mutant” and they
-have more “Wild-type” markers than “Unknown” or “Failure”. If
+A patient will be considered “Wild-type” if he/she is not “Mutant” and he/she
+has more “Wild-type” markers than “Unknown” or “Failure”. If
 mutant_standard=2, A patient will be considered "Mutant" if his/her KRAS
 exon 2 is "Mutant".}
 }

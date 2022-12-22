@@ -14,8 +14,10 @@ test_that(
     p <-  kras(dl$biomark, 2)
     p1 <- left_join(dl$adsl, dl$biomark, by = "SUBJID") |>
       rename(BMK = BMMTR1) |>
-      select(SUBJID, ATRT, DTHDY, DTH, PFSDYCR, PFSCR, RACE, B_ECOG, BMK)|>
-      filter(BMK != "")
+      select(SUBJID, ATRT, DTHDY, DTH, PFSDYCR, PFSCR, AGE, SEX, RACE, BMK)|>
+      filter(BMK != "") |>
+      filter(BMK != "Failure")
+    p1$arm <- paste(p1$BMK, p1$ATRT, sep = ", ")
     p1 <- data.frame(p1)
     expect_equal(p, p1)
   }
