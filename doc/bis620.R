@@ -42,13 +42,6 @@ log_rank(kras(dl$biomark, 2), "PFS", "Treatment", "Wild-type")$median
 log_rank(kras(dl$biomark, 2), "PFS", "Treatment", "Wild-type")$p
 
 ## ---- fig.align='center', fig.dim = c(6, 3.5)---------------------------------
-survival_plot(kras(dl$biomark, 1), "OS", "Treatment", "Wild-type")
-log_rank(kras(dl$biomark, 1), "OS", "Treatment", "Wild-type")$median
-
-## -----------------------------------------------------------------------------
-log_rank(kras(dl$biomark, 1), "OS", "Treatment", "Wild-type")$p
-
-## ---- fig.align='center', fig.dim = c(6, 3.5)---------------------------------
 survival_plot(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")
 log_rank(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")$median
 
@@ -58,7 +51,7 @@ log_rank(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")$p
 ## -----------------------------------------------------------------------------
 adverse_event(dl$adae, "Wild-type")$table |> kable(format = "simple")
 
-## ---- fig.align='center', fig.dim = c(7, 4.5)---------------------------------
+## ---- fig.align='center', fig.dim = c(7, 4)-----------------------------------
 adverse_event(dl$adae, "Wild-type")$plot
 
 ## -----------------------------------------------------------------------------

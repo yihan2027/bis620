@@ -76,13 +76,13 @@ kras(dl$biomark, mutant_standard = 2) |> group_by(arm) |> summarize(n = n()) |>
 ```
 The chart above showed the number of people in each arm when using the second standard of classification, that is, consider a patient as mutant if he/she is "Mutant" in exon 2.
 
-We further analyzed the difference in PFS, OS, and adverse events between different arms based on the processed data above.
+We further analyzed the difference in PFS and adverse events between different arms based on the processed data above.
 
 ## Analysis
 ### 1 Efficacy Analysis
-The object of efficacy analysis is to assess the treatment effect of panitumumab+ FOLFOX for patients with previously untreated Wild-type KRAS metastatic colorectal cancer versus FOLFOX alone. We will compare progression-free survival(PFS) and Overall survival(OS) between different treatments based on KRAS mutation status. PFS is the length of time during and after the treatment of a disease, such as cancer, that a patient lives with the disease but it does not get worse[3]. OS is the length of time from either the date of diagnosis or the start of treatment for a disease, such as cancer, that patients diagnosed with the disease are still alive[4]. PFS is regarded as the primary outcome measure, and OS is the secondary outcome measure. 
+The object of efficacy analysis is to assess the treatment effect of panitumumab+ FOLFOX for patients with previously untreated Wild-type KRAS metastatic colorectal cancer versus FOLFOX alone. We will compare progression-free survival (PFS) between different treatments based on KRAS mutation status. PFS is the length of time during and after the treatment of a disease, such as cancer, that a patient lives with the disease but it does not get worse[3].
 
-The Kaplan-Meier method was used to estimate the efficacy on PFS and OS between groups. Median survival with a 95% Confidence Interval (CI) was estimated and a log-rank test was performed to compare the two groups on survival.
+The Kaplan-Meier method was used to estimate the efficacy on PFS between groups. Median survival with a 95% Confidence Interval (CI) was estimated and a log-rank test was performed to compare the two groups on survival.
 
 The function *survival_plot()* and *log_rank()* from bis620.2022 package were used for analysis. 
 
@@ -110,17 +110,7 @@ When using only exon 2 to classify KRAS mutant status, that is, calling `kras(x,
 
 This indicated that using exon 2, 3, and 4 altogether, that is, `kras(x, mutant_standard = 1)` as the classification standard had a better performance in distinguishing the survival difference between Wild-type and Mutant KRAS. So we used `kras(x, mutant_standard = 1)` for the following analysis.
 
-#### 1.2 Overall Survival (OS)
-```{r, fig.align='center', fig.dim = c(6, 3.5)}
-survival_plot(kras(dl$biomark, 1), "OS", "Treatment", "Wild-type")
-log_rank(kras(dl$biomark, 1), "OS", "Treatment", "Wild-type")$median
-```
-```{r}
-log_rank(kras(dl$biomark, 1), "OS", "Treatment", "Wild-type")$p
-```
-In patients with Wild-type KRAS metastatic colorectal cancer, median OS was 790 days (95 % CI 684-908 days) for panitumumab–FOLFOX4 and 616 days (95% CI 531-724 days) for FOLFOX4 alone. The log-rank test showed that we cannot reject the null hypothesis of no difference between the two survival curves (P=0.09).
-
-#### 1.3 Survival for Mutant KRAS
+#### 1.2 Progression-free survival (PFS) for Mutant KRAS
 ```{r, fig.align='center', fig.dim = c(6, 3.5)}
 survival_plot(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")
 log_rank(kras(dl$biomark, 1), "PFS", "Treatment", "Mutant")$median
@@ -139,7 +129,7 @@ The function *adverse_event()* from bis620.2022 package was used for analysis.
 ```{r}
 adverse_event(dl$adae, "Wild-type")$table |> kable(format = "simple")
 ```
-```{r, fig.align='center', fig.dim = c(7, 4.5)}
+```{r, fig.align='center', fig.dim = c(7, 4)}
 adverse_event(dl$adae, "Wild-type")$plot
 ```
 We can tell that there was a significant difference between panitumumab-FOLFOX4 and FOLFOX4 alone groups for the adverse events listed below: dermatitis acneiform (32% vs. 0%, P=5.53e-21), rash (54% vs. 7%, P=1.36e-27), skin fissures (16% vs. 0%, P=2.21e-10), acne (14% vs. 0%, P=2.11e-08), erythema (16% vs. 3%, P=3.37e-06), dry skin (20% vs. 6%, P=4.14e-06), pruritus	(26% vs. 5%, P=1.28e-09), and palmar-plantar erythrodysaesthesia syndrome (11% vs. 2%, P=5.58e-05). 
@@ -190,5 +180,3 @@ The vignette demonstrated the usage of the "bis620.2022" package on the survival
 *[2] Orditura M, De Vita F, Galizia G, et al. Correlation between efficacy and skin rash occurrence following treatment with the epidermal growth factor receptor inhibitor cetuximab: a single institution retrospective analysis. Oncol Rep. 2009;21(4):1023-1028. [doi:10.3892/or_00000319](https://www.spandidos-publications.com/or/21/4/1023)*
 
 *[3] NCI Dictionary of Cancer Terms. National Cancer Institute. Retrieved December 21, 2022. (https://www.cancer.gov/publications/dictionaries/cancer-terms/def/progression-free-survival?redirect=true)*
-
-*[4] NCI Dictionary of Cancer Terms. National Cancer Institute. Retrieved December 21, 2022. (https://www.cancer.gov/publications/dictionaries/cancer-terms/def/overall-survival)*
